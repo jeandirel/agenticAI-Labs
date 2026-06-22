@@ -1,0 +1,37 @@
+# Module Agentic AI & AI Agents — PGE5 / M2
+# Python 3.11+ recommandé.  Installation : pip install -r requirements.txt
+
+# --- Couche LLM agnostique (Labs 1, 2, 4) ---
+openai>=1.40
+mistralai>=1.0
+anthropic>=0.34
+python-dotenv>=1.0
+
+# --- Séance 3 : frameworks ---
+# Versions ÉPINGLÉES (smoke-testées de bout en bout avec Gemini le 2026-06-20).
+langgraph==1.2.6
+langchain==1.3.10
+langchain-core==1.4.8
+crewai==1.14.7
+litellm==1.82.3
+
+# Adaptateur LangChain selon le fournisseur (installer celui qui correspond à LLM_PROVIDER) :
+langchain-google-genai==4.2.5     # google / Gemini  (testé)
+# langchain-openai>=0.2           # openai
+# langchain-anthropic>=0.3        # anthropic
+# langchain-mistralai>=0.2        # mistral
+
+# --- Séance 4 : déploiement / API ---
+fastapi>=0.110
+uvicorn>=0.29
+
+# --- Notebooks / utilitaires ---
+jupyter>=1.0
+ipykernel>=6.29
+requests>=2.31
+
+# --- Optionnel : pour aller plus loin (NON requis — le RAG du Lab 3 est pur Python) ---
+# scikit-learn>=1.3     # retriever TF-IDF "industriel"
+# chromadb>=0.5         # base vectorielle pour un RAG à embeddings
+# numpy>=1.26
+# tiktoken>=0.7         # comptage de tokens exact
