@@ -1,0 +1,31 @@
+# --- Secrets / configuration locale --------------------------------------- #
+.env
+.secrets
+
+# --- Environnement virtuel -------------------------------------------------- #
+.venv/
+venv/
+env/
+
+# --- Livrables générés par le Lab 4 (déploiement Craft AI) ----------------- #
+agent_service.py
+app.py
+Dockerfile
+
+# --- Mémoire agent persistée (Lab 2) --------------------------------------- #
+*.memory.json
+agent_memory*.json
+
+# --- Python ----------------------------------------------------------------- #
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# --- Jupyter ---------------------------------------------------------------- #
+.ipynb_checkpoints/
+
+# --- OS / éditeurs ---------------------------------------------------------- #
+.DS_Store
+.vscode/
+.idea/
