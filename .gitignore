@@ -1,0 +1,6 @@
+.env
+.secrets
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
