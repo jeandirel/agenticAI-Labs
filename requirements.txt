@@ -24,6 +24,8 @@ langchain-anthropic>=1.4         # anthropic
 # --- Séance 4 : déploiement / API ---
 fastapi>=0.110
 uvicorn>=0.29
+gradio>=5.9
+gradio_client>=1.5
 
 # --- Notebooks / utilitaires ---
 jupyter>=1.0

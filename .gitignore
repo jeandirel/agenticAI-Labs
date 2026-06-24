@@ -4,3 +4,7 @@
 .ipynb_checkpoints/
 __pycache__/
 *.py[cod]
+traces/
+hf_space/traces/
+evaluation_report.json
+hf_space/evaluation_report.json
