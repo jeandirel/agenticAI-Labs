@@ -76,7 +76,7 @@ GOOGLE_OPENAI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/opena
 DEFAULT_MODELS = {
     "openai": "gpt-4o-mini",
     "mistral": "mistral-large-latest",
-    "anthropic": "claude-3-5-sonnet-latest",
+    "anthropic": "claude-sonnet-4-6",
     "google": "gemini-2.5-flash",
 }
 
@@ -93,8 +93,8 @@ PRICING_USD_PER_MTOK = {
     "gpt-4o-mini": (0.15, 0.60),
     "gpt-4o": (2.50, 10.00),
     "mistral-large-latest": (2.00, 6.00),
-    "claude-3-5-sonnet-latest": (3.00, 15.00),
-    "claude-3-5-haiku-latest": (0.80, 4.00),
+    "claude-sonnet-4-6": (3.00, 15.00),
+    "claude-haiku-4-5": (1.00, 5.00),
     "gemini-2.5-flash": (0.30, 2.50),
     "gemini-flash-latest": (0.30, 2.50),
 }
