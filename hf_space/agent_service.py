@@ -164,13 +164,13 @@ def extract_expression(query: str) -> str:
     filtered = "".join(ch if ch in allowed_chars else " " for ch in query)
     filtered = re.sub(r"\s+", " ", filtered).strip()
     candidates = []
+    m = re.search(r"racine\s+(?:carree\s+)?(?:de\s+)?(\d+(?:\.\d+)?)", query.lower())
+    if m:
+        candidates.append(f"sqrt({m.group(1)})")
     if filtered and re.search(r"\d", filtered) and re.search(r"[-+*/%]", filtered):
         candidates.append(filtered)
     candidates.extend(m.group().strip() for m in re.finditer(r"\([^A-Za-z]*\)", query))
     candidates.extend(m.group().strip() for m in re.finditer(r"\d[\d.\s()+\-*/%]*\d", query))
-    m = re.search(r"racine\s+(?:carree\s+)?(?:de\s+)?(\d+(?:\.\d+)?)", query.lower())
-    if m:
-        candidates.append(f"sqrt({m.group(1)})")
     candidates.append("2+2")
     for candidate in candidates:
         try:
