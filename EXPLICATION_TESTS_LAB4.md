@@ -57,7 +57,8 @@ Fonctions testees :
 
 ## `hf_space/app.py`
 
-C'est l'interface Gradio pour Hugging Face Spaces.
+C'est l'interface Gradio optionnelle. Elle est utile pour tester visuellement en
+local, mais la consigne finale demande surtout l'API FastAPI.
 
 Fonction testee :
 
@@ -68,6 +69,27 @@ Le test verifie :
 
 - une question vide retourne une erreur propre;
 - une question normale utilise bien l'agent en mode mock.
+
+## `hf_space/app_fastapi.py`
+
+C'est l'API FastAPI demandee par la consigne du TP.
+
+Endpoints testes :
+
+- `GET /`  
+  Retourne les informations de l'API et les endpoints disponibles.
+
+- `GET /health`  
+  Retourne `{"status": "ok"}` pour verifier que le service est vivant.
+
+- `POST /agent`  
+  Recoit un JSON `{"query": "..."}` et appelle le `handler` de l'agent.
+
+Le test verifie :
+
+- que l'API repond;
+- que le endpoint `/agent` appelle bien l'agent;
+- que l'outil `calculator` est utilise pour une question de calcul.
 
 ## `hf_space/eval_agent.py`
 
@@ -100,7 +122,7 @@ Les tests automatises ne testent pas directement chaque cellule du notebook. Ils
 
 ## Tests rapides manuels pour utiliser les outils
 
-Dans l'interface Gradio ou via `handler`, tu peux essayer :
+Dans l'API FastAPI, l'interface Gradio optionnelle ou via `handler`, tu peux essayer :
 
 ```text
 Combien font (256 * 1.5) + 12 ?

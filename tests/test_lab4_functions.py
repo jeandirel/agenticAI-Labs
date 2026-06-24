@@ -14,7 +14,9 @@ os.environ["FORCE_MOCK"] = "1"
 
 import agent_service  # noqa: E402
 import app  # noqa: E402
+import app_fastapi  # noqa: E402
 import eval_agent  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
 
 
 class TempWorkspaceTest(unittest.TestCase):
@@ -182,6 +184,29 @@ class AppTests(TempWorkspaceTest):
         result = app.run("Quelle est la date du jour ?")
         self.assertTrue(result["accepted"])
         self.assertIn("today", result["tools_used"])
+
+
+class FastAPITests(TempWorkspaceTest):
+    def test_root_describes_endpoint(self):
+        client = TestClient(app_fastapi.app)
+        response = client.get("/")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("agent", response.json()["endpoints"])
+
+    def test_health_endpoint(self):
+        client = TestClient(app_fastapi.app)
+        response = client.get("/health")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"status": "ok"})
+
+    def test_agent_endpoint_calls_handler(self):
+        client = TestClient(app_fastapi.app)
+        response = client.post("/agent", json={"query": "Combien font 12 * 12 ?"})
+        self.assertEqual(response.status_code, 200)
+        payload = response.json()
+        self.assertTrue(payload["accepted"])
+        self.assertIn("calculator", payload["tools_used"])
+        self.assertIn("144", payload["answer"])
 
 
 class EvalAgentTests(TempWorkspaceTest):
